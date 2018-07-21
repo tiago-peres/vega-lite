@@ -32,11 +32,11 @@ import {contains, flatAccessWithDatum, replacePathInField, titlecase} from './ut
 /**
  * Definition object for a constant value of an encoding channel.
  */
-export interface ValueDef {
+export interface ValueDef<V extends number | string | boolean | null = number | string | boolean | null> {
   /**
    * A constant value in visual domain (e.g., `"red"` / "#0099ff" for color, values between `0` to `1` for opacity).
    */
-  value: number | string | boolean | null;
+  value: V;
 }
 
 /**
@@ -90,16 +90,14 @@ export type FieldDefWithCondition<F extends FieldDef<any>> = F & ConditionValueD
  *   value: ...,
  * }
  */
-export interface ValueDefWithCondition<F extends FieldDef<any>> {
+export interface ValueDefWithCondition<
+  F extends FieldDef<any>,
+  V extends number | string | boolean | null = number | string | boolean | null
+> extends Partial<ValueDef<V>> {
   /**
    * A field definition or one or more value definition(s) with a selection predicate.
    */
-  condition?: Conditional<F> | Conditional<ValueDef> | Conditional<ValueDef>[];
-
-  /**
-   * A constant value in visual domain.
-   */
-  value?: number | string | boolean;
+  condition?: Conditional<F> | Conditional<ValueDef<V>> | Conditional<ValueDef<V>>[];
 }
 
 /**

@@ -35,24 +35,24 @@ export interface Encoding<F> {
   /**
    * X coordinates of the marks, or width of horizontal `"bar"` and `"area"`.
    */
-  x?: PositionFieldDef<F> | ValueDef;
+  x?: PositionFieldDef<F> | ValueDef<number | 'width'>;
 
   /**
    * Y coordinates of the marks, or height of vertical `"bar"` and `"area"`.
    */
-  y?: PositionFieldDef<F> | ValueDef;
+  y?: PositionFieldDef<F> | ValueDef<number | 'height'>;
 
   /**
    * X2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
    */
   // TODO: Ham need to add default behavior
-  x2?: FieldDefWithoutScale<F> | ValueDef;
+  x2?: FieldDefWithoutScale<F> | ValueDef<number | 'width'>;
 
   /**
    * Y2 coordinates for ranged `"area"`, `"bar"`, `"rect"`, and  `"rule"`.
    */
   // TODO: Ham need to add default behavior
-  y2?: FieldDefWithoutScale<F> | ValueDef;
+  y2?: FieldDefWithoutScale<F> | ValueDef<number | 'height'>;
 
   /**
    * Longitude position of geographically projected marks.
@@ -85,7 +85,7 @@ export interface Encoding<F> {
    * 1) For fine-grained control over both fill and stroke colors of the marks, please use the `fill` and `stroke` channels.  If either `fill` or `stroke` channel is specified, `color` channel will be ignored.
    * 2) See the scale documentation for more information about customizing [color scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme).
    */
-  color?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>>;
+  color?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>, string | null>;
 
   /**
    * Fill color of the marks.
@@ -93,7 +93,7 @@ export interface Encoding<F> {
    *
    * _Note:_ When using `fill` channel, `color ` channel will be ignored. To customize both fill and stroke, please use `fill` and `stroke` channels (not `fill` and `color`).
    */
-  fill?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>>;
+  fill?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>, string | null>;
 
   /**
    * Stroke color of the marks.
@@ -101,14 +101,14 @@ export interface Encoding<F> {
    *
    * _Note:_ When using `stroke` channel, `color ` channel will be ignored. To customize both stroke and fill, please use `stroke` and `fill` channels (not `stroke` and `color`).
    */
-  stroke?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>>;
+  stroke?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>, string | null>;
 
   /**
    * Opacity of the marks – either can be a value or a range.
    *
    * __Default value:__ If undefined, the default opacity depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `opacity` property.
    */
-  opacity?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>>;
+  opacity?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>, number>;
 
   /**
    * Size of the mark.
@@ -117,7 +117,7 @@ export interface Encoding<F> {
    * - For `"text"` – the text's font size.
    * - Size is unsupported for `"line"`, `"area"`, and `"rect"`. (Use `"trail"` instead of line with varying size)
    */
-  size?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>>;
+  size?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>, number>;
 
   /**
    * For `point` marks the supported values are
@@ -127,7 +127,7 @@ export interface Encoding<F> {
    *
    * __Default value:__ If undefined, the default shape depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#point-config)'s `shape` property.
    */
-  shape?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>>; // TODO: maybe distinguish ordinal-only
+  shape?: FieldDefWithCondition<MarkPropFieldDef<F>> | ValueDefWithCondition<MarkPropFieldDef<F>, string>; // TODO: maybe distinguish ordinal-only
   /**
    * Additional levels of detail for grouping data in aggregate views and
    * in line, trail, and area marks without mapping data to a specific visual channel.
@@ -142,17 +142,17 @@ export interface Encoding<F> {
   /**
    * Text of the `text` mark.
    */
-  text?: FieldDefWithCondition<TextFieldDef<F>> | ValueDefWithCondition<TextFieldDef<F>>;
+  text?: FieldDefWithCondition<TextFieldDef<F>> | ValueDefWithCondition<TextFieldDef<F>, string | number | boolean>;
 
   /**
    * The tooltip text to show upon mouse hover.
    */
-  tooltip?: FieldDefWithCondition<TextFieldDef<F>> | ValueDefWithCondition<TextFieldDef<F>> | TextFieldDef<F>[];
+  tooltip?: FieldDefWithCondition<TextFieldDef<F>> | ValueDefWithCondition<TextFieldDef<F>, string> | TextFieldDef<F>[];
 
   /**
    * A URL to load upon mouse click.
    */
-  href?: FieldDefWithCondition<FieldDefWithoutScale<F>> | ValueDefWithCondition<FieldDefWithoutScale<F>>;
+  href?: FieldDefWithCondition<FieldDefWithoutScale<F>> | ValueDefWithCondition<FieldDefWithoutScale<F>, string>;
 
   /**
    * Order of the marks.
@@ -162,7 +162,7 @@ export interface Encoding<F> {
    *
    * __Note__: In aggregate plots, `order` field should be `aggregate`d to avoid creating additional aggregation grouping.
    */
-  order?: OrderFieldDef<F> | OrderFieldDef<F>[] | ValueDef;
+  order?: OrderFieldDef<F> | OrderFieldDef<F>[] | ValueDef<number>;
 }
 
 export interface EncodingWithFacet<F> extends Encoding<F>, FacetMapping<F> {}
