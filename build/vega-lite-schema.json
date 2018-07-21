@@ -1497,6 +1497,46 @@
         }
       ]
     },
+    "ConditionalColorValueDef": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalPredicate<ColorValueDef>"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSelection<ColorValueDef>"
+        }
+      ]
+    },
+    "ConditionalTextValueDef": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalPredicate<TextValueDef>"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSelection<TextValueDef>"
+        }
+      ]
+    },
+    "ConditionalNumberValueDef": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalPredicate<NumberValueDef>"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSelection<NumberValueDef>"
+        }
+      ]
+    },
+    "ConditionalStringValueDef": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ConditionalPredicate<StringValueDef>"
+        },
+        {
+          "$ref": "#/definitions/ConditionalSelection<StringValueDef>"
+        }
+      ]
+    },
     "ConditionalValueDef": {
       "anyOf": [
         {
@@ -1714,6 +1754,81 @@
       "required": [
         "test",
         "type"
+      ],
+      "type": "object"
+    },
+    "ConditionalPredicate<ColorValueDef>": {
+      "additionalProperties": false,
+      "properties": {
+        "test": {
+          "$ref": "#/definitions/LogicalOperand<Predicate>"
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "test",
+        "value"
+      ],
+      "type": "object"
+    },
+    "ConditionalPredicate<TextValueDef>": {
+      "additionalProperties": false,
+      "properties": {
+        "test": {
+          "$ref": "#/definitions/LogicalOperand<Predicate>"
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ]
+        }
+      },
+      "required": [
+        "test",
+        "value"
+      ],
+      "type": "object"
+    },
+    "ConditionalPredicate<NumberValueDef>": {
+      "additionalProperties": false,
+      "properties": {
+        "test": {
+          "$ref": "#/definitions/LogicalOperand<Predicate>"
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": "number"
+        }
+      },
+      "required": [
+        "test",
+        "value"
+      ],
+      "type": "object"
+    },
+    "ConditionalPredicate<StringValueDef>": {
+      "additionalProperties": false,
+      "properties": {
+        "test": {
+          "$ref": "#/definitions/LogicalOperand<Predicate>"
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": "string"
+        }
+      },
+      "required": [
+        "test",
+        "value"
       ],
       "type": "object"
     },
@@ -1949,6 +2064,85 @@
       "required": [
         "selection",
         "type"
+      ],
+      "type": "object"
+    },
+    "ConditionalSelection<ColorValueDef>": {
+      "additionalProperties": false,
+      "properties": {
+        "selection": {
+          "$ref": "#/definitions/SelectionOperand",
+          "description": "A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose)."
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "selection",
+        "value"
+      ],
+      "type": "object"
+    },
+    "ConditionalSelection<TextValueDef>": {
+      "additionalProperties": false,
+      "properties": {
+        "selection": {
+          "$ref": "#/definitions/SelectionOperand",
+          "description": "A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose)."
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ]
+        }
+      },
+      "required": [
+        "selection",
+        "value"
+      ],
+      "type": "object"
+    },
+    "ConditionalSelection<NumberValueDef>": {
+      "additionalProperties": false,
+      "properties": {
+        "selection": {
+          "$ref": "#/definitions/SelectionOperand",
+          "description": "A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose)."
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": "number"
+        }
+      },
+      "required": [
+        "selection",
+        "value"
+      ],
+      "type": "object"
+    },
+    "ConditionalSelection<StringValueDef>": {
+      "additionalProperties": false,
+      "properties": {
+        "selection": {
+          "$ref": "#/definitions/SelectionOperand",
+          "description": "A [selection name](https://vega.github.io/vega-lite/docs/selection.html), or a series of [composed selections](https://vega.github.io/vega-lite/docs/selection.html#compose)."
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": "string"
+        }
+      },
+      "required": [
+        "selection",
+        "value"
       ],
       "type": "object"
     },
@@ -2403,7 +2597,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>"
             }
           ],
           "description": "Color of the marks – either fill or stroke color based on  the `filled` property of mark definition.\nBy default, `color` represents fill color for `\"area\"`, `\"bar\"`, `\"tick\"`,\n`\"text\"`, `\"trail\"`, `\"circle\"`, and `\"square\"` / stroke color for `\"line\"` and `\"point\"`.\n\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_\n1) For fine-grained control over both fill and stroke colors of the marks, please use the `fill` and `stroke` channels.  If either `fill` or `stroke` channel is specified, `color` channel will be ignored.\n2) See the scale documentation for more information about customizing [color scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme)."
@@ -2428,7 +2622,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>"
             }
           ],
           "description": "Fill color of the marks.\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_ When using `fill` channel, `color ` channel will be ignored. To customize both fill and stroke, please use `fill` and `stroke` channels (not `fill` and `color`)."
@@ -2439,7 +2633,7 @@
               "$ref": "#/definitions/FieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<FieldDef,string>"
             }
           ],
           "description": "A URL to load upon mouse click."
@@ -2470,7 +2664,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>"
             }
           ],
           "description": "Opacity of the marks – either can be a value or a range.\n\n__Default value:__ If undefined, the default opacity depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `opacity` property."
@@ -2487,7 +2681,7 @@
               "type": "array"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/NumberValueDef"
             }
           ],
           "description": "Order of the marks.\n- For stacked marks, this `order` channel encodes [stack order](https://vega.github.io/vega-lite/docs/stack.html#order).\n- For line and trail marks, this `order` channel encodes order of data points in the lines. This can be useful for creating [a connected scatterplot](https://vega.github.io/vega-lite/examples/connected_scatterplot.html).  Setting `order` to `{\"value\": null}` makes the line marks use the original order in the data sources.\n- Otherwise, this `order` channel encodes layer order of the marks.\n\n__Note__: In aggregate plots, `order` field should be `aggregate`d to avoid creating additional aggregation grouping."
@@ -2498,7 +2692,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,string>"
             }
           ],
           "description": "For `point` marks the supported values are\n`\"circle\"` (default), `\"square\"`, `\"cross\"`, `\"diamond\"`, `\"triangle-up\"`,\nor `\"triangle-down\"`, or else a custom SVG path string.\nFor `geoshape` marks it should be a field definition of the geojson data\n\n__Default value:__ If undefined, the default shape depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#point-config)'s `shape` property."
@@ -2509,7 +2703,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>"
             }
           ],
           "description": "Size of the mark.\n- For `\"point\"`, `\"square\"` and `\"circle\"`, – the symbol size, or pixel area of the mark.\n- For `\"bar\"` and `\"tick\"` – the bar and tick's size.\n- For `\"text\"` – the text's font size.\n- Size is unsupported for `\"line\"`, `\"area\"`, and `\"rect\"`. (Use `\"trail\"` instead of line with varying size)"
@@ -2520,7 +2714,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>"
             }
           ],
           "description": "Stroke color of the marks.\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_ When using `stroke` channel, `color ` channel will be ignored. To customize both stroke and fill, please use `stroke` and `fill` channels (not `stroke` and `color`)."
@@ -2531,7 +2725,7 @@
               "$ref": "#/definitions/TextFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/TextValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<TextFieldDef,(string|number|boolean)>"
             }
           ],
           "description": "Text of the `text` mark."
@@ -2542,7 +2736,7 @@
               "$ref": "#/definitions/TextFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/TextValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<TextFieldDef,string>"
             },
             {
               "items": {
@@ -2559,7 +2753,7 @@
               "$ref": "#/definitions/PositionFieldDef"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/ValueDef<(number|\"width\")>"
             }
           ],
           "description": "X coordinates of the marks, or width of horizontal `\"bar\"` and `\"area\"`."
@@ -2570,7 +2764,7 @@
               "$ref": "#/definitions/FieldDef"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/ValueDef<(number|\"width\")>"
             }
           ],
           "description": "X2 coordinates for ranged `\"area\"`, `\"bar\"`, `\"rect\"`, and  `\"rule\"`."
@@ -2581,7 +2775,7 @@
               "$ref": "#/definitions/PositionFieldDef"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/ValueDef<(number|\"height\")>"
             }
           ],
           "description": "Y coordinates of the marks, or height of vertical `\"bar\"` and `\"area\"`."
@@ -2592,7 +2786,7 @@
               "$ref": "#/definitions/FieldDef"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/ValueDef<(number|\"height\")>"
             }
           ],
           "description": "Y2 coordinates for ranged `\"area\"`, `\"bar\"`, `\"rect\"`, and  `\"rule\"`."
@@ -2638,7 +2832,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>"
             }
           ],
           "description": "Color of the marks – either fill or stroke color based on  the `filled` property of mark definition.\nBy default, `color` represents fill color for `\"area\"`, `\"bar\"`, `\"tick\"`,\n`\"text\"`, `\"trail\"`, `\"circle\"`, and `\"square\"` / stroke color for `\"line\"` and `\"point\"`.\n\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_\n1) For fine-grained control over both fill and stroke colors of the marks, please use the `fill` and `stroke` channels.  If either `fill` or `stroke` channel is specified, `color` channel will be ignored.\n2) See the scale documentation for more information about customizing [color scheme](https://vega.github.io/vega-lite/docs/scale.html#scheme)."
@@ -2667,7 +2861,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>"
             }
           ],
           "description": "Fill color of the marks.\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_ When using `fill` channel, `color ` channel will be ignored. To customize both fill and stroke, please use `fill` and `stroke` channels (not `fill` and `color`)."
@@ -2678,7 +2872,7 @@
               "$ref": "#/definitions/FieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/ValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<FieldDef,string>"
             }
           ],
           "description": "A URL to load upon mouse click."
@@ -2709,7 +2903,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>"
             }
           ],
           "description": "Opacity of the marks – either can be a value or a range.\n\n__Default value:__ If undefined, the default opacity depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `opacity` property."
@@ -2726,7 +2920,7 @@
               "type": "array"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/NumberValueDef"
             }
           ],
           "description": "Order of the marks.\n- For stacked marks, this `order` channel encodes [stack order](https://vega.github.io/vega-lite/docs/stack.html#order).\n- For line and trail marks, this `order` channel encodes order of data points in the lines. This can be useful for creating [a connected scatterplot](https://vega.github.io/vega-lite/examples/connected_scatterplot.html).  Setting `order` to `{\"value\": null}` makes the line marks use the original order in the data sources.\n- Otherwise, this `order` channel encodes layer order of the marks.\n\n__Note__: In aggregate plots, `order` field should be `aggregate`d to avoid creating additional aggregation grouping."
@@ -2741,7 +2935,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,string>"
             }
           ],
           "description": "For `point` marks the supported values are\n`\"circle\"` (default), `\"square\"`, `\"cross\"`, `\"diamond\"`, `\"triangle-up\"`,\nor `\"triangle-down\"`, or else a custom SVG path string.\nFor `geoshape` marks it should be a field definition of the geojson data\n\n__Default value:__ If undefined, the default shape depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#point-config)'s `shape` property."
@@ -2752,7 +2946,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,number>"
             }
           ],
           "description": "Size of the mark.\n- For `\"point\"`, `\"square\"` and `\"circle\"`, – the symbol size, or pixel area of the mark.\n- For `\"bar\"` and `\"tick\"` – the bar and tick's size.\n- For `\"text\"` – the text's font size.\n- Size is unsupported for `\"line\"`, `\"area\"`, and `\"rect\"`. (Use `\"trail\"` instead of line with varying size)"
@@ -2763,7 +2957,7 @@
               "$ref": "#/definitions/MarkPropFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/MarkPropValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<MarkPropFieldDef,(string|null)>"
             }
           ],
           "description": "Stroke color of the marks.\n__Default value:__ If undefined, the default color depends on [mark config](https://vega.github.io/vega-lite/docs/config.html#mark)'s `color` property.\n\n_Note:_ When using `stroke` channel, `color ` channel will be ignored. To customize both stroke and fill, please use `stroke` and `fill` channels (not `stroke` and `color`)."
@@ -2774,7 +2968,7 @@
               "$ref": "#/definitions/TextFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/TextValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<TextFieldDef,(string|number|boolean)>"
             }
           ],
           "description": "Text of the `text` mark."
@@ -2785,7 +2979,7 @@
               "$ref": "#/definitions/TextFieldDefWithCondition"
             },
             {
-              "$ref": "#/definitions/TextValueDefWithCondition"
+              "$ref": "#/definitions/ValueDefWithCondition<TextFieldDef,string>"
             },
             {
               "items": {
@@ -2802,7 +2996,7 @@
               "$ref": "#/definitions/PositionFieldDef"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/ValueDef<(number|\"width\")>"
             }
           ],
           "description": "X coordinates of the marks, or width of horizontal `\"bar\"` and `\"area\"`."
@@ -2813,7 +3007,7 @@
               "$ref": "#/definitions/FieldDef"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/ValueDef<(number|\"width\")>"
             }
           ],
           "description": "X2 coordinates for ranged `\"area\"`, `\"bar\"`, `\"rect\"`, and  `\"rule\"`."
@@ -2824,7 +3018,7 @@
               "$ref": "#/definitions/PositionFieldDef"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/ValueDef<(number|\"height\")>"
             }
           ],
           "description": "Y coordinates of the marks, or height of vertical `\"bar\"` and `\"area\"`."
@@ -2835,7 +3029,7 @@
               "$ref": "#/definitions/FieldDef"
             },
             {
-              "$ref": "#/definitions/ValueDef"
+              "$ref": "#/definitions/ValueDef<(number|\"height\")>"
             }
           ],
           "description": "Y2 coordinates for ranged `\"area\"`, `\"bar\"`, `\"rect\"`, and  `\"rule\"`."
@@ -9480,18 +9674,23 @@
       ],
       "type": "string"
     },
-    "ValueDef": {
+    "ValueDef<(number|\"height\")>": {
       "additionalProperties": false,
       "description": "Definition object for a constant value of an encoding channel.",
       "properties": {
         "value": {
-          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
-          "type": [
-            "number",
-            "string",
-            "boolean",
-            "null"
-          ]
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "enum": [
+                "height"
+              ],
+              "type": "string"
+            }
+          ],
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity)."
         }
       },
       "required": [
@@ -9499,7 +9698,45 @@
       ],
       "type": "object"
     },
-    "ValueDefWithCondition": {
+    "ValueDef<(number|\"width\")>": {
+      "additionalProperties": false,
+      "description": "Definition object for a constant value of an encoding channel.",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "enum": [
+                "width"
+              ],
+              "type": "string"
+            }
+          ],
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity)."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "NumberValueDef": {
+      "additionalProperties": false,
+      "description": "Definition object for a constant value of an encoding channel.",
+      "properties": {
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "ValueDefWithCondition<FieldDef,string>": {
       "additionalProperties": false,
       "description": "A ValueDef with Condition<ValueDef | FieldDef>\n{\n   condition: {field: ...} | {value: ...},\n   value: ...,\n}",
       "properties": {
@@ -9509,11 +9746,11 @@
               "$ref": "#/definitions/ConditionalFieldDef"
             },
             {
-              "$ref": "#/definitions/ConditionalValueDef"
+              "$ref": "#/definitions/ConditionalStringValueDef"
             },
             {
               "items": {
-                "$ref": "#/definitions/ConditionalValueDef"
+                "$ref": "#/definitions/ConditionalStringValueDef"
               },
               "type": "array"
             }
@@ -9521,17 +9758,13 @@
           "description": "A field definition or one or more value definition(s) with a selection predicate."
         },
         "value": {
-          "description": "A constant value in visual domain.",
-          "type": [
-            "number",
-            "string",
-            "boolean"
-          ]
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": "string"
         }
       },
       "type": "object"
     },
-    "MarkPropValueDefWithCondition": {
+    "ValueDefWithCondition<MarkPropFieldDef,(string|null)>": {
       "additionalProperties": false,
       "description": "A ValueDef with Condition<ValueDef | FieldDef>\n{\n   condition: {field: ...} | {value: ...},\n   value: ...,\n}",
       "properties": {
@@ -9541,11 +9774,11 @@
               "$ref": "#/definitions/ConditionalMarkPropFieldDef"
             },
             {
-              "$ref": "#/definitions/ConditionalValueDef"
+              "$ref": "#/definitions/ConditionalColorValueDef"
             },
             {
               "items": {
-                "$ref": "#/definitions/ConditionalValueDef"
+                "$ref": "#/definitions/ConditionalColorValueDef"
               },
               "type": "array"
             }
@@ -9553,17 +9786,72 @@
           "description": "A field definition or one or more value definition(s) with a selection predicate."
         },
         "value": {
-          "description": "A constant value in visual domain.",
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
           "type": [
-            "number",
             "string",
-            "boolean"
+            "null"
           ]
         }
       },
       "type": "object"
     },
-    "TextValueDefWithCondition": {
+    "ValueDefWithCondition<MarkPropFieldDef,number>": {
+      "additionalProperties": false,
+      "description": "A ValueDef with Condition<ValueDef | FieldDef>\n{\n   condition: {field: ...} | {value: ...},\n   value: ...,\n}",
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ConditionalMarkPropFieldDef"
+            },
+            {
+              "$ref": "#/definitions/ConditionalNumberValueDef"
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/ConditionalNumberValueDef"
+              },
+              "type": "array"
+            }
+          ],
+          "description": "A field definition or one or more value definition(s) with a selection predicate."
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "ValueDefWithCondition<MarkPropFieldDef,string>": {
+      "additionalProperties": false,
+      "description": "A ValueDef with Condition<ValueDef | FieldDef>\n{\n   condition: {field: ...} | {value: ...},\n   value: ...,\n}",
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ConditionalMarkPropFieldDef"
+            },
+            {
+              "$ref": "#/definitions/ConditionalStringValueDef"
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/ConditionalStringValueDef"
+              },
+              "type": "array"
+            }
+          ],
+          "description": "A field definition or one or more value definition(s) with a selection predicate."
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ValueDefWithCondition<TextFieldDef,(string|number|boolean)>": {
       "additionalProperties": false,
       "description": "A ValueDef with Condition<ValueDef | FieldDef>\n{\n   condition: {field: ...} | {value: ...},\n   value: ...,\n}",
       "properties": {
@@ -9573,11 +9861,11 @@
               "$ref": "#/definitions/ConditionalTextFieldDef"
             },
             {
-              "$ref": "#/definitions/ConditionalValueDef"
+              "$ref": "#/definitions/ConditionalTextValueDef"
             },
             {
               "items": {
-                "$ref": "#/definitions/ConditionalValueDef"
+                "$ref": "#/definitions/ConditionalTextValueDef"
               },
               "type": "array"
             }
@@ -9585,12 +9873,40 @@
           "description": "A field definition or one or more value definition(s) with a selection predicate."
         },
         "value": {
-          "description": "A constant value in visual domain.",
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
           "type": [
-            "number",
             "string",
+            "number",
             "boolean"
           ]
+        }
+      },
+      "type": "object"
+    },
+    "ValueDefWithCondition<TextFieldDef,string>": {
+      "additionalProperties": false,
+      "description": "A ValueDef with Condition<ValueDef | FieldDef>\n{\n   condition: {field: ...} | {value: ...},\n   value: ...,\n}",
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ConditionalTextFieldDef"
+            },
+            {
+              "$ref": "#/definitions/ConditionalStringValueDef"
+            },
+            {
+              "items": {
+                "$ref": "#/definitions/ConditionalStringValueDef"
+              },
+              "type": "array"
+            }
+          ],
+          "description": "A field definition or one or more value definition(s) with a selection predicate."
+        },
+        "value": {
+          "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
+          "type": "string"
         }
       },
       "type": "object"
