@@ -1,5 +1,7 @@
 import {assert} from 'chai';
-import {normalizeEncoding} from '../src/encoding';
+import {defaultConfig} from '../src/config';
+import {extractTransformsFromEncoding, normalizeEncoding} from '../src/encoding';
+import {PositionFieldDef} from '../src/fielddef';
 import * as log from '../src/log';
 
 describe('encoding', () => {
@@ -39,5 +41,22 @@ describe('encoding', () => {
         assert.equal(logger.warns[0], log.message.droppingColor('encoding', {stroke: true}));
       })
     );
+  });
+
+  describe('extractTransformsFromEncoding', () => {
+    it('should include timeUnit in channel that have timeUnit before extracting', () => {
+      const encoding = extractTransformsFromEncoding(
+        {
+          x: {
+            field: 'date',
+            timeUnit: 'month',
+            type: 'ordinal'
+          }
+        },
+        defaultConfig
+      );
+      expect(encoding.encoding.x).toBeDefined();
+      expect((encoding.encoding.x as PositionFieldDef<string>).timeUnit).toEqual('month');
+    });
   });
 });

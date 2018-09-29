@@ -226,9 +226,12 @@ export function extractTransformsFromEncoding(oldEncoding: Encoding<string>, con
       }
       // now the field should refer to post-transformed field instead
       encoding[channel] = {
-        field: vgField(channelDef),
-        type: channelDef.type,
-        title: title(channelDef, config, {allowDisabling: true})
+        ...{
+          field: vgField(channelDef),
+          type: channelDef.type,
+          title: title(channelDef, config, {allowDisabling: true})
+        },
+        ...(channelDef.timeUnit ? {timeUnit: channelDef.timeUnit} : {})
       };
     } else {
       // For value def, just copy

@@ -35,7 +35,8 @@
             "x": {
               "field": "year_Year",
               "type": "temporal",
-              "title": "Year (year)"
+              "title": "Year (year)",
+              "timeUnit": "year"
             },
             "color": {"value": "black"}
           }
@@ -52,7 +53,8 @@
             "x": {
               "field": "year_Year",
               "type": "temporal",
-              "title": "Year (year)"
+              "title": "Year (year)",
+              "timeUnit": "year"
             },
             "color": {"value": "black"}
           }
@@ -69,7 +71,8 @@
             "x": {
               "field": "year_Year",
               "type": "temporal",
-              "title": "Year (year)"
+              "title": "Year (year)",
+              "timeUnit": "year"
             },
             "color": {"value": "black"}
           }

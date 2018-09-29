@@ -45,7 +45,12 @@
           "expr": "datetime(year(datum[\"Year\"]), 0, 1, 0, 0, 0, 0)"
         },
         {"type": "formula", "expr": "datum.ci1", "as": "lower_ci1"},
-        {"type": "formula", "expr": "datum.ci0", "as": "upper_ci1"}
+        {"type": "formula", "expr": "datum.ci0", "as": "upper_ci1"},
+        {
+          "type": "formula",
+          "as": "year_year_Year",
+          "expr": "datetime(year(datum[\"year_Year\"]), 0, 1, 0, 0, 0, 0)"
+        }
       ]
     },
     {
@@ -71,7 +76,7 @@
       "name": "layer_0_layer_0_marks",
       "type": "area",
       "style": ["area", "errorband-band"],
-      "sort": {"field": "datum[\"year_Year\"]", "order": "descending"},
+      "sort": {"field": "datum[\"year_year_Year\"]", "order": "descending"},
       "from": {"data": "data_1"},
       "encode": {
         "update": {
@@ -79,13 +84,13 @@
           "orient": {"value": "vertical"},
           "fill": {"value": "#4c78a8"},
           "tooltip": {
-            "signal": "{\"Year (year)\": timeFormat(datum[\"year_Year\"], '%b %d, %Y'), \"Mean of Miles per Gallon (95% CIs)\": format(datum[\"lower_ci1\"], \"\"), \"upper_ci1\": format(datum[\"upper_ci1\"], \"\")}"
+            "signal": "{\"Year (year)\": timeFormat(datum[\"year_year_Year\"], '%Y'), \"Mean of Miles per Gallon (95% CIs)\": format(datum[\"lower_ci1\"], \"\"), \"upper_ci1\": format(datum[\"upper_ci1\"], \"\")}"
           },
-          "x": {"scale": "x", "field": "year_Year"},
+          "x": {"scale": "x", "field": "year_year_Year"},
           "y": {"scale": "y", "field": "lower_ci1"},
           "y2": {"scale": "y", "field": "upper_ci1"},
           "defined": {
-            "signal": "datum[\"year_Year\"] !== null && !isNaN(datum[\"year_Year\"]) && datum[\"lower_ci1\"] !== null && !isNaN(datum[\"lower_ci1\"])"
+            "signal": "datum[\"year_year_Year\"] !== null && !isNaN(datum[\"year_year_Year\"]) && datum[\"lower_ci1\"] !== null && !isNaN(datum[\"lower_ci1\"])"
           }
         }
       }
@@ -117,7 +122,7 @@
       "type": "time",
       "domain": {
         "fields": [
-          {"data": "data_1", "field": "year_Year"},
+          {"data": "data_1", "field": "year_year_Year"},
           {"data": "data_2", "field": "year_Year"}
         ]
       },
