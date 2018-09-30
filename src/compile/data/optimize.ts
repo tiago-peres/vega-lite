@@ -63,7 +63,7 @@ function moveFacetDown(node: DataFlowNode) {
 
       // replicate the subtree and place it before the facet's main node
       const cloner = cloneSubtree(node);
-      const copy: DataFlowNode[] = flatten(node.children.map(cloner));
+      const copy = flatten(node.children.map(cloner));
       for (const c of copy) {
         c.parent = facetMain;
       }
